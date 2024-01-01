@@ -1,0 +1,29 @@
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: darkgray;
+    color: rgb(20, 115, 209);
+}
+
+table {
+    margin: 100px auto;
+    border-color: 1px solid black;
+
+}
+
+table:hover {
+    cursor: pointer;
+}
+
+.cell {
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    background-color: whitesmoke;
+}
+
+
+.cell img {
+    width: 25px;
+    height: auto;
+}
