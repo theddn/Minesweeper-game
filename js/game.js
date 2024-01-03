@@ -1,14 +1,12 @@
 'use strict'
 
 const EMPTY = ''
-const ROOF = 'ROOF'
 const MINE = '💣'
 const FLAG = '🚩'
 
 // The Model
 var gBoard
-var gMinePos
-var gMinesCount
+
 
 const gGame = {
     isOn: false,
@@ -17,16 +15,15 @@ const gGame = {
     secsPassed: 0
 }
 
-// var gLevel = {
-//     SIZE: 4,
-//     MINES: 2
-// }
+var gLevel = {
+    SIZE: 4,
+    MINES: 2
+}
 
 function onInit() {
     gBoard = buildBoard()
-
+    addsMines()
     renderBoard(gBoard)
-
 }
 
 function buildBoard() {
@@ -38,20 +35,15 @@ function buildBoard() {
             board[i][j] = { minesAroundCount: 0, isShown: false, isMine: false, isMarked: false }
         }
     }
-    // board[1][2].isMine = true
-    // board[2][1].isMine = true
-    // board[3][2].isMine = true
-    addsMines(board)
-    console.log(board);
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board[i].length; j++) {
+            board[i][j].minesAroundCount = setMinesNegsCount({ i, j }, board)
+        }
+    }
+
     return board
 }
-function addsMines(board) {
-    board[1][2].isMine = true
-    board[2][1].isMine = true
-    board[3][2].isMine = true
-    setMinesNegsCount(board)
 
-}
 function renderBoard(board) {
     var strHTML = ''
     for (var i = 0; i < board.length; i++) {
@@ -59,45 +51,80 @@ function renderBoard(board) {
         for (var j = 0; j < board[0].length; j++) {
             const currCell = board[i][j]
             var cellClass = getClassName({ i, j })
-            strHTML += `\t<td class="cell ${cellClass}"
-            onclick = "onCellClicked(this,${i},${j})">`
-            if(currCell.isMine === true) strHTML += MINE
-            if (currCell.isMine === true)
-                setMinesNegsCount({ i, j }, board)
+            var cellContent = currCell.isShown ? currCell.minesAroundCount : ''
+            if (currCell.isMine && currCell.isShown) cellContent = MINE
+
+            strHTML += `\t<td class="cell ${cellClass}" onclick="onCellClicked(this,${i},${j})">`
+            strHTML += cellContent
             strHTML += '</td>\n'
         }
         strHTML += '</tr>\n'
     }
     const elBoard = document.querySelector('.board')
     elBoard.innerHTML = strHTML
+    // console.log(elBoard);
+}
+// TODO: 
+function addsMines() {
+    const emptyPos = getEmptyPos()
+    gBoard[emptyPos.i][emptyPos.j].isMine = true
 }
 
-// TODO: store number in model + dom 
+function getEmptyPos() {
+    const emptyPos = []
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[i].length; j++) {
+            emptyPos.push({ i, j })
+        }
+    }
+    const idx = getRandomInt(0, emptyPos.length - 1)
+    return emptyPos[idx]
+}
+
+
+
+
 function setMinesNegsCount(pos, board) {
-    var minesCount = 0
+    var minesAroundCount = 0
 
     for (var i = pos.i - 1; i <= pos.i + 1; i++) {
         if (i < 0 || i >= board.length) continue
-
         for (var j = pos.j - 1; j <= pos.j + 1; j++) {
             if (j < 0 || j >= board[i].length) continue
             if (i === pos.i && j === pos.j) continue
-
-            if (board[i][j].isMine === true) minesCount++
-
+            if (board[i][j].isMine === true) minesAroundCount++
         }
     }
-    console.log(pos, minesCount);
-    return minesCount
+    return minesAroundCount
 }
 
 function onCellClicked(elCell, i, j) {
-    elCell = document.querySelector('.cell')
-    const cell = `cell-${i}-${j}`
-    console.log(cell);
+    gBoard[i][j].isShown = true
+    renderBoard(gBoard)
+    if (gBoard[i][j].minesAroundCount === 0 && gBoard[i][j].isMine === false) {
+        exposeNeg(i, j)
+    }
 }
 
-//  Returns the class name for a specific cell
+function exposeNeg(rowIdx, colIdx) {
+
+    for (var i = rowIdx - 1; i <= rowIdx + 1; i++) {
+        if (i < 0 || i >= gBoard.length) continue
+        for (var j = colIdx - 1; j <= colIdx + 1; j++) {
+            if (j < 0 || j >= gBoard[i].length) continue
+            if (i === rowIdx && j === colIdx) continue
+            gBoard[i][j].isShown = true
+        }
+    }
+    renderBoard(gBoard)
+}
+
+function renderCell(location, value) {
+    const cellSelector = '.' + getClassName(location)
+    const elCell = document.querySelector(cellSelector)
+    elCell.innerHTML = value
+}
+
 function getClassName(pos) {
     const cellClass = `cell-${pos.i}-${pos.j}`
     return cellClass

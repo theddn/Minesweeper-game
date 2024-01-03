@@ -1,23 +1,34 @@
-body {
-    text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: darkgray;
-    color: rgb(20, 115, 209);
-}
+ body {
+     text-align: center;
+     font-family: Arial, Helvetica, sans-serif;
+     background-color: whitesmoke;
+ }
 
-table {
-    margin: 100px auto;
-    border-color: 1px solid black;
+ table:hover {
+     cursor: pointer;
+ }
 
-}
+ table {
+     margin: 0 auto;
+     background-color: antiquewhite;
+ }
 
-table:hover {
-    cursor: pointer;
-}
+ td {
+     border: 2px solid black;
+ }
 
-.cell {
-    text-align: center;
-    width: 40px;
-    height: 40px;
-    background-color: whitesmoke;
-}
+ .board td {
+     width: 30px;
+     height: 30px;
+     text-align: center;
+     transition: 0.5s;
+     padding: 5px;
+     color: #000;
+ }
+
+ .board td:hover {
+     cursor: pointer;
+     background-color: grey;
+ }
+
+ 
