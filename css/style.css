@@ -1,34 +1,63 @@
- body {
-     text-align: center;
-     font-family: Arial, Helvetica, sans-serif;
-     background-color: whitesmoke;
- }
+body {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: whitesmoke;
+}
 
- table:hover {
-     cursor: pointer;
- }
+table {
+    margin: 0 auto;
+    background-color: lightgray;
+}
 
- table {
-     margin: 0 auto;
-     background-color: antiquewhite;
- }
+td {
+    border: 2px solid black;
+}
 
- td {
-     border: 2px solid black;
- }
+.board td {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    transition: 0.5s;
+    padding: 5px;
+    color:black
+    
+}
 
- .board td {
-     width: 30px;
-     height: 30px;
-     text-align: center;
-     transition: 0.5s;
-     padding: 5px;
-     color: #000;
- }
+.board td:hover {
+    cursor: pointer;
+    background-color: grey;
+}
+td:after {
+    cursor: pointer;
+    background-color: darkgray;
+}
 
- .board td:hover {
-     cursor: pointer;
-     background-color: grey;
- }
+.button{
+    font-family: arial;
+    font-size: 14px;
+    text-shadow: 1px 1px 0px #7CACDE;
+    box-shadow: 1px 1px 1px #F6F9CA;
+    padding: 10px 25px;
+    border-radius: 10px;
+    border: 2px solid #9FA336;
+    background: #eeb06d;
+  }
+  button:hover {
+    color: #FDFFEE ;
+    background: #B0CF4B;
+  }
+  
 
- 
+.footer {
+    font-family: 'Nunito', sans-serif;
+    text-align: center;
+    font-size: 16px;
+    line-height: 28px;
+    width: 100%;
+    background-color: darkgoldenrod;
+    color: black;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+
+}
