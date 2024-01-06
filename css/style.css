@@ -1,58 +1,87 @@
 body {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
     background-color: whitesmoke;
 }
 
-table {
+.table {
+    margin: auto;
+}
+
+.game {
     margin: 0 auto;
-    background-color: lightgray;
+    border: 2px solid darkgoldenrod;
+
+    border-spacing: 5px;
 }
 
-td {
-    border: 2px solid black;
+.game-board {
+    margin: 0 auto;
+    border-spacing: 2px;
 }
 
-.board td {
-    width: 30px;
-    height: 30px;
-    text-align: center;
+.cell {
+    width: 20px;
+    height: 20px;
     transition: 0.5s;
-    padding: 5px;
-    color:black
-    
-}
-
-.board td:hover {
-    cursor: pointer;
-    background-color: grey;
-}
-td:after {
-    cursor: pointer;
-    background-color: darkgray;
-}
-
-.button{
-    font-family: arial;
-    font-size: 14px;
-    text-shadow: 1px 1px 0px #7CACDE;
-    box-shadow: 1px 1px 1px #F6F9CA;
-    padding: 10px 25px;
+    padding: 3px 2px;
     border-radius: 10px;
     border: 2px solid #9FA336;
+    background-color: darkgoldenrod;
+    font-size: 14px;
+
+}
+
+.cell:hover {
+    background-color: #B0CF4B;
+    cursor: pointer;
+}
+
+.stats {
+    padding: 5px;
+}
+
+button.play {
+    border-radius: 40%;
+    font-size: 24px;
+    padding: 5px 5px;
+
+}
+
+.shown {
+    background-color: #B0CF4B;
+}
+
+.bomb {
+    background-color: red;
+}
+
+.hide {
+    display: none;
+    transition: 0.5s;
+}
+
+button {
+    margin: 5px auto;
+    font-family: arial;
+    font-size: 12px;
+    text-shadow: 1px 1px 0px #7CACDE;
+    box-shadow: 1px 1px 1px #F6F9CA;
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 3px solid #9FA336;
     background: #eeb06d;
-  }
-  button:hover {
-    color: #FDFFEE ;
+}
+
+button:hover {
+    color: #FDFFEE;
     background: #B0CF4B;
-  }
-  
+}
 
 .footer {
     font-family: 'Nunito', sans-serif;
     text-align: center;
     font-size: 16px;
-    line-height: 28px;
+    line-height: 20px;
     width: 100%;
     background-color: darkgoldenrod;
     color: black;
