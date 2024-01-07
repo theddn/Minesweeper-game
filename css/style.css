@@ -1,18 +1,18 @@
 h1 {
     font-family: 'Nunito', sans-serif;
     font-size: 24px;
-    color: aliceblue;
+    color: #e4a158;
 
 }
 
 body {
     text-align: center;
-    background-color: rgb(9, 9, 9);
+  background-color: antiquewhite;
 }
 
 .game {
     margin: 0 auto;
-    border: 2px double darkgoldenrod;
+    border: 3px double darkgoldenrod;
 }
 
 
@@ -35,7 +35,6 @@ body {
 }
 
 .stats {
-    color: aliceblue;
     /* padding: 2px; */
     width: 48px;
     margin: 2px auto;
