@@ -25,8 +25,10 @@ const gLevel = {
 }
 
 function onInit() {
+    gGame.isOn = true
     gBoard = buildBoard()
     renderBoard(gBoard)
+
 }
 
 function buildBoard() {
@@ -78,7 +80,7 @@ function getEmptyPos(board) {
             emptyPos.push({ i, j })
         }
     }
-    const idx = getRandomInt(0, emptyPos.length - 1)
+    const idx = getRandomIntInclusive(0, emptyPos.length - 1)
     return emptyPos[idx]
 }
 
@@ -102,16 +104,18 @@ function onCellRightClick(elCell, i, j) {
 }
 
 function onCellClicked(elCell, i, j) {
-    if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true
-    checkIsLose(i, j)
+    if (gGame.isOn === false) return
+    if (gBoard[i][j].isMarked) return
     if (gBoard[i][j].minesAroundCount === 0) {
         expandShown(i, j)
     }
+    checkIsLose(i, j)
     renderBoard(gBoard)
 }
 
 function changeLevel(num) {
+    if (gGame.isOn === false) return
     switch (num) {
         case -1:
             gLevel.SIZE = 4
@@ -126,6 +130,7 @@ function changeLevel(num) {
             gLevel.MINES = 32
             break;
     }
+
     onInit()
 }
 
@@ -139,7 +144,6 @@ function checkIsLose(i, j) {
         console.log('game over');
         showAllMines()
     }
-
 }
 
 function showAllMines() {
@@ -151,6 +155,7 @@ function showAllMines() {
             }
         }
     }
+    renderBoard(gBoard)
 }
 
 function getShownCount(board) {
@@ -169,6 +174,7 @@ function getShownCount(board) {
 }
 
 function mainButton(elMainBtn) {
+    // gGame.isOn = true
     const elPanel = document.querySelector('.panel')
     elMainBtn = document.querySelector('.play')
     elMainBtn.innerHTML = SMILEY

@@ -1,6 +1,6 @@
 'use strict'
 
-// guide for static mines
+// static mines
 function createStaticMines(board) {
     board[2][0].isMine = true
     board[2][1].isMine = true
@@ -9,14 +9,12 @@ function createStaticMines(board) {
 function createMine(board) {
     const emptyPos = getEmptyPos(board)
     board[emptyPos.i][emptyPos.j].isMine = true
-
 }
 
 function createMines(board) {
     for (var i = 0; i < gLevel.MINES; i++) {
         createMine(board)
     }
-    return board
 }
 
 function setMinesNegsCount(pos, board) {
@@ -34,6 +32,7 @@ function setMinesNegsCount(pos, board) {
 
     return minesAroundCount
 }
+
 function expandShown(i, j) {
     for (var idx = i - 1; idx <= i + 1; idx++) {
         if (idx < 0 || idx >= gBoard.length) continue
@@ -45,7 +44,6 @@ function expandShown(i, j) {
             if (gBoard[idx][jdx].minesAroundCount === 0) expandShown(idx, jdx)
         }
     }
-    renderBoard(gBoard)
 }
 
 function createMineNeg(board) {

@@ -1,33 +1,31 @@
-body {
-    text-align: center;
-    background-color: whitesmoke;
+h1 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 24px;
+    color: aliceblue;
+
 }
 
-.table {
-    margin: auto;
+body {
+    text-align: center;
+    background-color: rgb(9, 9, 9);
 }
 
 .game {
     margin: 0 auto;
-    border: 2px solid darkgoldenrod;
-
-    border-spacing: 5px;
+    border: 2px double darkgoldenrod;
 }
 
-.game-board {
-    margin: 0 auto;
-    border-spacing: 2px;
-}
 
 .cell {
     width: 20px;
     height: 20px;
     transition: 0.5s;
     padding: 3px 2px;
-    border-radius: 10px;
+    border-radius: 6px;
     border: 2px solid #9FA336;
     background-color: darkgoldenrod;
-    font-size: 14px;
+    /* font-size: 16px; */
+
 
 }
 
@@ -37,22 +35,31 @@ body {
 }
 
 .stats {
-    padding: 5px;
+    color: aliceblue;
+    /* padding: 2px; */
+    width: 48px;
+    margin: 2px auto;
+    border-radius: 10px;
+
 }
 
 button.play {
+
     border-radius: 40%;
-    font-size: 24px;
-    padding: 5px 5px;
+    font-size: 20px;
+    padding: 5px;
+    border: 2px solid #B0CF4B;
 
 }
 
 .shown {
     background-color: #B0CF4B;
+    /* border: 2px solid black; */
 }
 
 .bomb {
     background-color: red;
+    border: 2px solid black;
 }
 
 .hide {
@@ -61,14 +68,14 @@ button.play {
 }
 
 button {
-    margin: 5px auto;
-    font-family: arial;
-    font-size: 12px;
+    margin: 6px auto;
+    font-family: arial black;
+    font-size: 10px;
     text-shadow: 1px 1px 0px #7CACDE;
     box-shadow: 1px 1px 1px #F6F9CA;
-    padding: 5px 10px;
+    padding: 4px 8px;
     border-radius: 10px;
-    border: 3px solid #9FA336;
+    border: 2px solid #9FA336;
     background: #eeb06d;
 }
 
@@ -80,8 +87,8 @@ button:hover {
 .footer {
     font-family: 'Nunito', sans-serif;
     text-align: center;
-    font-size: 16px;
-    line-height: 20px;
+    font-size: 12px;
+    line-height: 15px;
     width: 100%;
     background-color: darkgoldenrod;
     color: black;
