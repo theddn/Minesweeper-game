@@ -25,10 +25,8 @@ const gLevel = {
 }
 
 function onInit() {
-    gGame.isOn = true
     gBoard = buildBoard()
     renderBoard(gBoard)
-
 }
 
 function buildBoard() {
@@ -73,14 +71,16 @@ function renderBoard(board) {
 }
 
 function getEmptyPos(board) {
-    var emptyPos = []
+    const emptyPos = []
 
     for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[i].length; j++) {
-            emptyPos.push({ i, j })
+        for (var j = 0; j < board[0].length; j++) {
+            if (!board[i][j].isMine)
+                emptyPos.push({ i, j })
         }
     }
-    const idx = getRandomIntInclusive(0, emptyPos.length - 1)
+    const idx = getRandomInt(0, emptyPos.length)
+
     return emptyPos[idx]
 }
 
@@ -104,18 +104,16 @@ function onCellRightClick(elCell, i, j) {
 }
 
 function onCellClicked(elCell, i, j) {
-    gBoard[i][j].isShown = true
-    if (gGame.isOn === false) return
     if (gBoard[i][j].isMarked) return
+    gBoard[i][j].isShown = true
+    checkIsLose(i, j)
     if (gBoard[i][j].minesAroundCount === 0) {
         expandShown(i, j)
     }
-    checkIsLose(i, j)
     renderBoard(gBoard)
 }
 
 function changeLevel(num) {
-    if (gGame.isOn === false) return
     switch (num) {
         case -1:
             gLevel.SIZE = 4
@@ -130,8 +128,23 @@ function changeLevel(num) {
             gLevel.MINES = 32
             break;
     }
-
     onInit()
+}
+
+function getShownCount() {
+    const elShownCount = document.querySelector('.shown-count')
+    var count = gLevel.MINES
+    var markCount = 0
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[i].length; j++) {
+            if (gBoard[i][j].isMarked) count--
+            if (gBoard[i][j].isMarked && gBoard[i][j].isMine) markCount++
+        }
+    }
+    gGame.shownCount = count
+    gGame.markedCount = markCount
+    elShownCount.innerHTML = count
+    checkIsWin()
 }
 
 function checkIsLose(i, j) {
@@ -144,6 +157,15 @@ function checkIsLose(i, j) {
         console.log('game over');
         showAllMines()
     }
+
+}
+
+function checkIsWin() {
+    const elMainBtn = document.querySelector('.play')
+    if (gGame.shownCount === 0 &&( gGame.markedCount === gLevel.MINES)) {      
+        console.log('win');
+        elMainBtn.innerHTML = WIN_SMILEY
+    }
 }
 
 function showAllMines() {
@@ -155,29 +177,13 @@ function showAllMines() {
             }
         }
     }
-    renderBoard(gBoard)
-}
-
-function getShownCount(board) {
-    const elShownCount = document.querySelector('.shown-count')
-    var count = gLevel.MINES
-    var markCount = 0
-    for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[0].length; j++) {
-            if (gBoard[i][j].isMarked) count--
-            if (gBoard[i][j].isMarked && gBoard[i][j].isMine) markCount++
-        }
-    }
-    gGame.shownCount = count
-    gGame.markedCount = markCount
-    elShownCount.innerHTML = count
 }
 
 function mainButton(elMainBtn) {
-    // gGame.isOn = true
     const elPanel = document.querySelector('.panel')
     elMainBtn = document.querySelector('.play')
     elMainBtn.innerHTML = SMILEY
     elPanel.classList.remove('hide')
     onInit()
 }
+
