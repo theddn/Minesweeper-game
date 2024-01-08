@@ -1,18 +1,19 @@
 h1 {
     font-family: 'Nunito', sans-serif;
     font-size: 24px;
-    color: #d08535;
+    color: rgb(18, 17, 17);
 
 }
 
 body {
     text-align: center;
-
+    background-color: #6498d0;
 }
 
 .game {
+
     margin: 0 auto;
-    border: 3px double darkgoldenrod;
+
 }
 
 
@@ -22,15 +23,15 @@ body {
     transition: 0.5s;
     padding: 3px 2px;
     border-radius: 6px;
-    border: 2px solid #9FA336;
-    background-color: darkgoldenrod;
+    border: 2px solid #575a19;
+    background-color: burlywood;
     /* font-size: 16px; */
 
 
 }
 
 .cell:hover {
-    background-color: #B0CF4B;
+    background-color: #dfe4ce;
     cursor: pointer;
 }
 
@@ -42,27 +43,25 @@ body {
 
 }
 
-button.play {
-
-    border-radius: 40%;
-    font-size: 20px;
+.play {
+    font-size: 25px;
     padding: 5px;
-    border: 2px solid #B0CF4B;
 
 }
 
 .shown {
-    background-color: #B0CF4B;
+    background-color: rgb(33, 173, 82);
+    color: azure;
     /* border: 2px solid black; */
 }
 
 .bomb {
-    background-color: red;
+    background-color: rgb(227, 10, 10);
     border: 1px solid black;
 }
 
-.bomb:hover{
-    background-color: red; 
+.bomb:hover {
+    background-color: rgb(227, 10, 10);
 }
 
 .hide {
@@ -78,7 +77,7 @@ button {
     box-shadow: 1px 1px 1px #F6F9CA;
     padding: 4px 8px;
     border-radius: 10px;
-    border: 2px solid #9FA336;
+    border: 2px solid black;
     background: #eeb06d;
 }
 
@@ -91,13 +90,13 @@ button:hover {
 .footer {
     font-family: 'Nunito', sans-serif;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     line-height: 15px;
     width: 100%;
-    background-color: darkgoldenrod;
+    /* background-color: rgb(236, 195, 91); */
     color: black;
     position: fixed;
     left: 0;
-    bottom: 0;
+    bottom: 2em;
 
 }

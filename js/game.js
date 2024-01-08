@@ -81,7 +81,7 @@ function getEmptyPos(board) {
                 emptyPos.push({ i, j })
         }
     }
-    const idx = getRandomInt(0, emptyPos.length - 1)
+    const idx = getRandomInt(0, emptyPos.length)
 
     return emptyPos[idx]
 }
