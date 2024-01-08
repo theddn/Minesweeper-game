@@ -161,6 +161,7 @@ function checkIsWin() {
     if (gGame.shownCount === 0 && (gGame.markedCount === gLevel.MINES)) {
         console.log('win');
         elMainBtn.innerHTML = WIN_SMILEY
+        gGame.isOn = false
     }
 }
 
@@ -170,8 +171,7 @@ function mainButton(elMainBtn) {
     elMainBtn = document.querySelector('.play')
     elMainBtn.innerHTML = SMILEY
     elPanel.classList.remove('hide')
-    onInit()
-    // onPlay()
+    onInit() 
 }
 
 function changeLevel(num) {
@@ -199,8 +199,8 @@ function changeLevel(num) {
 // }
 
 // function OnFirstClickedCell(board) {
-//     const newBoard = copyMat(board)
-//     const emptyPos = getEmptyPos(board)
+//     var newBoard = copyMat(gBoard)
+//     const emptyPos = getEmptyPos(gBoard)
 
 //     for (var i = 0; i < board.length; i++) {
 //         for (var j = 0; j < board[0].length; j++) {

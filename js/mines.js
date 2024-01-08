@@ -46,7 +46,7 @@ function expandShown(i, j) {
             if (gBoard[idx][jdx].minesAroundCount === 0) expandShown(idx, jdx)
         }
     }
-    renderBoard(gBoard)
+    
 }
 
 function createMineNeg(board) {
