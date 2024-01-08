@@ -17,8 +17,8 @@ body {
 
 
 .cell {
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     transition: 0.5s;
     padding: 3px 2px;
     border-radius: 6px;
@@ -58,7 +58,11 @@ button.play {
 
 .bomb {
     background-color: red;
-    border: 2px solid black;
+    border: 1px solid black;
+}
+
+.bomb:hover{
+    background-color: red; 
 }
 
 .hide {
@@ -79,6 +83,7 @@ button {
 }
 
 button:hover {
+    cursor: pointer;
     color: #FDFFEE;
     background: #B0CF4B;
 }

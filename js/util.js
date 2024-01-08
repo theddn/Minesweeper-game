@@ -13,7 +13,7 @@ function createMat(ROWS, COLS) {
 }
 
 function copyMat(mat) {
-    var newMat = []
+    const newMat = []
     for (var i = 0; i < mat.length; i++) {
         newMat[i] = []
         for (var j = 0; j < mat[0].length; j++) {

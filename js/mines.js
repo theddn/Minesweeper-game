@@ -34,6 +34,7 @@ function setMinesNegsCount(pos, board) {
 
     return minesAroundCount
 }
+
 function expandShown(i, j) {
     for (var idx = i - 1; idx <= i + 1; idx++) {
         if (idx < 0 || idx >= gBoard.length) continue

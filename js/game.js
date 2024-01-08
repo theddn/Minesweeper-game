@@ -12,6 +12,7 @@ const WIN_SMILEY = '😎'
 var gBoard
 var gTimer
 
+
 const gGame = {
     isOn: false,
     shownCount: 0,
@@ -27,6 +28,7 @@ const gLevel = {
 function onInit() {
     gBoard = buildBoard()
     renderBoard(gBoard)
+
 }
 
 function buildBoard() {
@@ -65,7 +67,7 @@ function renderBoard(board) {
         }
         strHTML += `</tr>\n`
     }
-    getShownCount(board)
+    getShownCount()
     const elBoard = document.querySelector('.game-board')
     elBoard.innerHTML = strHTML
 }
@@ -74,7 +76,7 @@ function getEmptyPos(board) {
     const emptyPos = []
 
     for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[0].length; j++) {
+        for (var j = 0; j < board[i].length; j++) {
             if (!board[i][j].isMine)
                 emptyPos.push({ i, j })
         }
@@ -90,12 +92,12 @@ function getClassName(pos) {
 }
 
 function onCellRightClick(elCell, i, j) {
-    gGame.isOn = true
     document.addEventListener('contextmenu', e => {
         e.preventDefault()
         // console.log("right button clicked");
     })
     //flag toggle
+    if (gGame.isOn === false) return
     if (gBoard[i][j].isShown === false) {
         // createFlag(i, j)
         gBoard[i][j].isMarked = !gBoard[i][j].isMarked
@@ -104,6 +106,8 @@ function onCellRightClick(elCell, i, j) {
 }
 
 function onCellClicked(elCell, i, j) {
+
+    if (gGame.isOn === false) return
     if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true
     checkIsLose(i, j)
@@ -111,24 +115,6 @@ function onCellClicked(elCell, i, j) {
         expandShown(i, j)
     }
     renderBoard(gBoard)
-}
-
-function changeLevel(num) {
-    switch (num) {
-        case -1:
-            gLevel.SIZE = 4
-            gLevel.MINES = 2
-            break;
-        case 0:
-            gLevel.SIZE = 8
-            gLevel.MINES = 14
-            break;
-        case 1:
-            gLevel.SIZE = 12
-            gLevel.MINES = 32
-            break;
-    }
-    onInit()
 }
 
 function getShownCount() {
@@ -157,15 +143,6 @@ function checkIsLose(i, j) {
         console.log('game over');
         showAllMines()
     }
-
-}
-
-function checkIsWin() {
-    const elMainBtn = document.querySelector('.play')
-    if (gGame.shownCount === 0 &&( gGame.markedCount === gLevel.MINES)) {      
-        console.log('win');
-        elMainBtn.innerHTML = WIN_SMILEY
-    }
 }
 
 function showAllMines() {
@@ -173,17 +150,63 @@ function showAllMines() {
         for (var j = 0; j < gBoard[i].length; j++) {
             if (gBoard[i][j].isMine === true) {
                 gBoard[i][j].isShown = true
-
             }
         }
+    }
+
+}
+
+function checkIsWin() {
+    const elMainBtn = document.querySelector('.play')
+    if (gGame.shownCount === 0 && (gGame.markedCount === gLevel.MINES)) {
+        console.log('win');
+        elMainBtn.innerHTML = WIN_SMILEY
     }
 }
 
 function mainButton(elMainBtn) {
+    gGame.isOn = true
     const elPanel = document.querySelector('.panel')
     elMainBtn = document.querySelector('.play')
     elMainBtn.innerHTML = SMILEY
     elPanel.classList.remove('hide')
     onInit()
+    // onPlay()
 }
 
+function changeLevel(num) {
+    if (gGame.isOn === false) return
+    switch (num) {
+        case -1:
+            gLevel.SIZE = 4
+            gLevel.MINES = 2
+            break;
+        case 0:
+            gLevel.SIZE = 8
+            gLevel.MINES = 14
+            break;
+        case 1:
+            gLevel.SIZE = 12
+            gLevel.MINES = 32
+            break;
+    }
+    onInit()
+}
+
+// function onPlay() {
+//     gBoard = OnFirstClickedCell(gBoard)
+//     renderBoard(gBoard)
+// }
+
+// function OnFirstClickedCell(board) {
+//     const newBoard = copyMat(board)
+//     const emptyPos = getEmptyPos(board)
+
+//     for (var i = 0; i < board.length; i++) {
+//         for (var j = 0; j < board[0].length; j++) {
+//             if (board[i][j].isMine === true) newBoard[i][j].isMine = false
+//             else newBoard[emptyPos.i][emptyPos.j].isMine = true
+//         }
+//     }
+//     return newBoard
+// }
