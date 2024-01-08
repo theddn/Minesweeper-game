@@ -76,12 +76,12 @@ function getEmptyPos(board) {
     const emptyPos = []
 
     for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[i].length; j++) {
+        for (var j = 0; j < board[0].length; j++) {
             if (!board[i][j].isMine)
                 emptyPos.push({ i, j })
         }
     }
-    const idx = getRandomInt(0, emptyPos.length)
+    const idx = getRandomInt(0, emptyPos.length - 1)
 
     return emptyPos[idx]
 }
@@ -150,7 +150,6 @@ function showAllMines() {
             }
         }
     }
-
 }
 
 function checkIsWin() {
@@ -168,7 +167,7 @@ function mainButton(elMainBtn) {
     elMainBtn = document.querySelector('.play')
     elMainBtn.innerHTML = SMILEY
     // elPanel.classList.remove('hide')
-    onInit() 
+    onInit()
 }
 
 function changeLevel(num) {
