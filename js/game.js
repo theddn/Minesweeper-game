@@ -97,7 +97,6 @@ function onCellRightClick(elCell, i, j) {
         // console.log("right button clicked");
     })
     //flag toggle
-    if (gGame.isOn === false) return
     if (gBoard[i][j].isShown === false) {
         // createFlag(i, j)
         gBoard[i][j].isMarked = !gBoard[i][j].isMarked
@@ -106,8 +105,6 @@ function onCellRightClick(elCell, i, j) {
 }
 
 function onCellClicked(elCell, i, j) {
-
-    if (gGame.isOn === false) return
     if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true
     checkIsLose(i, j)
@@ -135,10 +132,10 @@ function getShownCount() {
 
 function checkIsLose(i, j) {
     const elMainBtn = document.querySelector('.play')
-    const elPanel = document.querySelector('.panel')
+    // const elPanel = document.querySelector('.panel')
     if (gBoard[i][j].isMine === true) {
         elMainBtn.innerHTML = DEAD_SMILEY
-        elPanel.classList.add('hide')
+        // elPanel.classList.add('hide')
         gGame.isOn = false
         console.log('game over');
         showAllMines()
@@ -170,12 +167,11 @@ function mainButton(elMainBtn) {
     const elPanel = document.querySelector('.panel')
     elMainBtn = document.querySelector('.play')
     elMainBtn.innerHTML = SMILEY
-    elPanel.classList.remove('hide')
+    // elPanel.classList.remove('hide')
     onInit() 
 }
 
 function changeLevel(num) {
-    if (gGame.isOn === false) return
     switch (num) {
         case -1:
             gLevel.SIZE = 4
