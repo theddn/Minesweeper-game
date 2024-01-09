@@ -13,10 +13,18 @@ function createMine(board) {
 }
 
 function createMines(board) {
-    for (var i = 0; i < gLevel.MINES; i++) {
+    for (var i = 0; i < LVL.MINES; i++) {
         createMine(board)
     }
     return board
+}
+
+function createMineNeg(board) {
+    for (var i = 0; i < board.length; i++) {
+        for (var j = 0; j < board[i].length; j++) {
+            board[i][j].minesAroundCount = setMinesNegsCount({ i, j }, board)
+        }
+    }
 }
 
 function setMinesNegsCount(pos, board) {
@@ -49,10 +57,3 @@ function expandShown(i, j) {
     
 }
 
-function createMineNeg(board) {
-    for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[i].length; j++) {
-            board[i][j].minesAroundCount = setMinesNegsCount({ i, j }, board)
-        }
-    }
-}

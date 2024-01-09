@@ -4,22 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/style.css" />
+
     <title>Minesweeper</title>
   </head>
   <body onload="onInit()">
+    <!-- <img src="img/woods.jpg" alt="woods"/> -->
     <h1>Minesweeper</h1>
     <button class="play" onclick="mainButton(this)">😃</button>
+    <div class="panel">
+      <button onclick="changeLevel(4)">Beginner</button>
+      <button onclick="changeLevel(8)">Medium</button>
+      <button onclick="changeLevel(12)">Expert</button>
+    </div>
     <div class="stats">
       <span>💣</span>
       <span class="shown-count">0</span>
-      <!-- <span>🕒</span>
-      <span class="secsPassed-count">00</span> -->
-    </div>
-    <div class="panel">
-      <button onclick="changeLevel(-1)">Beginner</button>
-      <button onclick="changeLevel(0)">Medium</button>
-      <button onclick="changeLevel(1)">Expert</button>
-      <br>
+      <span>🕒</span>
+      <span class="secsPassed-count">00</span>
+      <br />
     </div>
     <table class="game">
       <tbody class="game-board"></tbody>
