@@ -1,102 +1,13 @@
-h1 {
-    font-family: 'Nunito', sans-serif;
-    font-size: 24px;
-    color: rgb(18, 17, 17);
-
-}
-
 body {
+    background-color: antiquewhite;
     text-align: center;
-    background-color: #6498d0;
-}
-
-.game {
-
-    margin: 0 auto;
 
 }
 
-
-.cell {
-    width: 22px;
-    height: 22px;
-    transition: 0.5s;
-    padding: 3px 2px;
-    border-radius: 6px;
-    border: 2px solid #575a19;
-    background-color: burlywood;
-    /* font-size: 16px; */
-
-
+img {
+    padding: 10px;
+    margin: auto;
 }
-
-.cell:hover {
-    background-color: #dfe4ce;
-    cursor: pointer;
-}
-
-.stats {
-    /* padding: 2px; */
-    width: 48px;
-    margin: 2px auto;
-    border-radius: 10px;
-
-}
-
-.play {
-    font-size: 25px;
-    padding: 5px;
-
-}
-
-.shown {
-    background-color: rgb(33, 173, 82);
-    color: azure;
-    /* border: 2px solid black; */
-}
-
-.bomb {
-    background-color: rgb(227, 10, 10);
-    border: 1px solid black;
-}
-
-.bomb:hover {
-    background-color: rgb(227, 10, 10);
-}
-
-.hide {
-    display: none;
-    transition: 0.5s;
-}
-
-button {
-    margin: 6px auto;
-    font-family: arial black;
-    font-size: 10px;
-    text-shadow: 1px 1px 0px #7CACDE;
-    box-shadow: 1px 1px 1px #F6F9CA;
-    padding: 4px 8px;
-    border-radius: 10px;
-    border: 2px solid black;
-    background: #eeb06d;
-}
-
-button:hover {
-    cursor: pointer;
-    color: #FDFFEE;
-    background: #B0CF4B;
-}
-
-.footer {
-    font-family: 'Nunito', sans-serif;
-    text-align: center;
-    font-size: 15px;
-    line-height: 15px;
-    width: 100%;
-    /* background-color: rgb(236, 195, 91); */
-    color: black;
-    position: fixed;
-    left: 0;
-    bottom: 2em;
-
+button{
+margin: auto;
 }
