@@ -8,7 +8,7 @@ h1 {
 
 body {
     text-align: center;
-    background-image: url('../img/woods.jpg');
+    background-image: url('./img/woods.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -44,7 +44,7 @@ button:hover {
 .cell {
     width: 18px;
     height: 18px;
-    /* text-shadow: 1px 1px 0px #7CACDE; */
+
 
     box-shadow: 1px 1px 1px #F6F9CA;
     transition: 0.5s;
