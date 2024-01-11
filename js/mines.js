@@ -19,17 +19,8 @@ function createMines(board) {
     return board
 }
 
-function createMineNeg(board) {
-    for (var i = 0; i < board.length; i++) {
-        for (var j = 0; j < board[i].length; j++) {
-            board[i][j].minesAroundCount = setMinesNegsCount({ i, j }, board)
-        }
-    }
-}
-
 function setMinesNegsCount(pos, board) {
     var minesAroundCount = 0
-    const elCell = document.querySelector(`.cell-${pos.i}-${pos.j}`)
 
     for (var i = pos.i - 1; i <= pos.i + 1; i++) {
         if (i < 0 || i >= board.length) continue
@@ -54,6 +45,6 @@ function expandShown(i, j) {
             if (gBoard[idx][jdx].minesAroundCount === 0) expandShown(idx, jdx)
         }
     }
-    
+
 }
 

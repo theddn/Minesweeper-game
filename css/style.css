@@ -5,10 +5,9 @@ h1 {
     color: rgb(18, 17, 17);
 }
 
-
 body {
     text-align: center;
-    background-image: url('./img/woods.jpg');
+    background-image: url('../img/woods.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -44,8 +43,6 @@ button:hover {
 .cell {
     width: 18px;
     height: 18px;
-
-
     box-shadow: 1px 1px 1px #F6F9CA;
     transition: 0.5s;
     padding: 3px 2px;
@@ -81,8 +78,8 @@ button:hover {
 .footer {
     font-family: 'Nunito', sans-serif;
     text-align: center;
-    font-size: 15px;
-    line-height: 12px;
+    font-size: 0.9em;
+    line-height: 0.6em;
     width: 100%;
     color: black;
     position: fixed;
