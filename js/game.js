@@ -31,6 +31,7 @@ function onInit() {
 function buildBoard() {
     const board = []
     const changeLevel = LVL.SIZE
+    
     for (var i = 0; i < changeLevel; i++) {
         const row = []
         for (var j = 0; j < changeLevel; j++) {

@@ -1,54 +1,55 @@
+* {
+    box-sizing: border-box;
+    text-align: center;
+}
+
 h1 {
     font-family: "Russo One", sans-serif;
-    width: 100%;
-    height: 100%;
     color: rgb(18, 17, 17);
 }
 
 body {
-    text-align: center;
-    background-image: url("../img/woods.jpg");
-    background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-image: url("../img/tree6.jpeg");
     background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .game {
-    margin: auto;
+    margin: 0 auto;
 }
 
-button {
-    margin: 6px auto;
+.btn {
+    margin: 5px auto;
     font-family: arial black;
-    font-size: 10px;
     text-shadow: 1px 1px 0px #7CACDE;
     box-shadow: 1px 1px 1px #F6F9CA;
     padding: 4px 8px;
-    border-radius: 10px;
-    border: 2px solid black;
+    border-radius: 5px;
+    border: 1px solid black;
     background: #eeb06d;
 }
 
-button:hover {
+.btn:hover {
     cursor: pointer;
     color: #FDFFEE;
     background: #B0CF4B;
 }
 
 .play {
-    font-size: 24px;
-    padding: 5px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
 }
 
 .cell {
-    width: 18px;
-    height: 18px;
+    width: 25px;
+    height: 25px;
     box-shadow: 1px 1px 1px #F6F9CA;
     transition: 0.5s;
-    padding: 3px 2px;
-    border-radius: 6px;
-    border: 2px solid #575a19;
+    border-radius: 5px;
     background-color: burlywood;
+    border: 1px solid black;
 }
 
 .cell:hover {
@@ -62,8 +63,8 @@ button:hover {
 }
 
 .bomb {
+    box-shadow: none;
     background-color: rgb(227, 10, 10);
-    border: 1px solid black;
 }
 
 .stats {
@@ -75,15 +76,13 @@ button:hover {
 
 }
 
-.footer {
+footer {
+    background-image: cover;
     font-family: 'Nunito', sans-serif;
     text-align: center;
-    font-size: 0.9em;
-    line-height: 0.6em;
     width: 100%;
-    color: black;
     position: fixed;
     left: 0;
-    bottom: 1em;
+    bottom: 0;
 
 }
