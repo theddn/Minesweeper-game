@@ -110,7 +110,7 @@ function onCellRightClick(elCell,i, j) {
     renderBoard(gBoard)
 }
 
-function onCellClicked(i, j) {
+function onCellClicked(elCell,i, j) {
     if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true
     checkIsLose(i, j)
