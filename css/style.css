@@ -11,6 +11,7 @@ h1 {
 body {
     background-image: url("../img/tree6.jpeg");
     background-size: cover;
+    min-height: 772px;
     background-repeat: no-repeat;
 }
 

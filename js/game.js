@@ -31,7 +31,7 @@ function onInit() {
 function buildBoard() {
     const board = []
     const changeLevel = LVL.SIZE
-    
+
     for (var i = 0; i < changeLevel; i++) {
         const row = []
         for (var j = 0; j < changeLevel; j++) {
@@ -99,7 +99,7 @@ function renderCell(pos, board) {
     elCell.innerHTML = value
 }
 
-function onCellRightClick(elCell, i, j) {
+function onCellRightClick(elCell,i, j) {
     document.addEventListener('contextmenu', e => {
         e.preventDefault()
     })
@@ -110,7 +110,7 @@ function onCellRightClick(elCell, i, j) {
     renderBoard(gBoard)
 }
 
-function onCellClicked(elCell, i, j) {
+function onCellClicked(i, j) {
     if (gBoard[i][j].isMarked) return
     gBoard[i][j].isShown = true
     checkIsLose(i, j)
@@ -149,7 +149,7 @@ function showAllMines() {
     for (var i = 0; i < gBoard.length; i++) {
         for (var j = 0; j < gBoard[i].length; j++) {
             if (gBoard[i][j].isMine) {
-                gBoard[i][j].isShown = true        
+                gBoard[i][j].isShown = true
             }
         }
     }
